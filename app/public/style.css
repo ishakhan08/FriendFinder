@@ -1,3 +1,25 @@
+canvas {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  .heading{
+    position: absolute;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -25%;
+  
+    font-family: 'Helvetica';
+    line-height: 100vh;
+    text-transform: uppercase;
+    font-weight: lighter;
+    color: #ccc;
+    text-align: center;
+  }
+
 .typewriter h1 {
     overflow: hidden; /* Ensures the content is not revealed until the animation */
     /* border-right: .15em solid orange; The typwriter cursor */
@@ -23,7 +45,7 @@
     from, to { border-color: transparent }
     50% { border-color: orange; }
   }
-
+ 
   .play {
     height: 250px;	
     overflow: hidden;
@@ -36,7 +58,7 @@
     margin-left: 40%;
     line-height: 50px;
     text-align: center;
-    margin-top: 8%;
+    margin-top: -45%;
     border-radius: 20px;
     color: white;
     background: black;
@@ -54,3 +76,30 @@
     transform: translateY(0%); 
     }
    }
+
+   img {
+    width: 30px;
+    height: 30px;
+    -webkit-animation-name: img; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 7s; /* Safari 4.0 - 8.0 */
+    animation-name: img;
+    animation-duration: 7s;
+    /* transition-delay: 10s; */
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes img {
+    from {
+        margin: 30%;
+        width:400px;
+        height: 400px;
+        
+    }
+    to {
+        margin: 0;
+        width:  30px;
+        height: 30px;
+        
+
+    }
+}
