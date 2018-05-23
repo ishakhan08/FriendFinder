@@ -1,0 +1,56 @@
+.typewriter h1 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    /* border-right: .15em solid orange; The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 7s steps(40, end),
+      blink-caret 2s step-end infinite;
+    text-align: center;
+    padding: 20px;
+    margin-top: 10%;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+  }
+
+  .play {
+    height: 250px;	
+    overflow: hidden;
+    position: relative;
+   }
+   .play {
+    position: absolute;
+    width: 20%;
+    height: 10%;
+    margin-left: 40%;
+    line-height: 50px;
+    text-align: center;
+    margin-top: 8%;
+    border-radius: 20px;
+    color: white;
+    background: black;
+
+   
+    /* Apply animation to this element */	
+    animation: button 7s ease-out;
+   }
+   /* Move it (define the animation) */
+   @keyframes button {
+    0%   { 
+    transform: translateY(1500%); 		
+    }
+    100% { 
+    transform: translateY(0%); 
+    }
+   }
