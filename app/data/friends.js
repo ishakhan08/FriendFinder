@@ -1,67 +1,104 @@
-const canvasEl = document.querySelector('#canvas');
-
-const w = canvasEl.width = window.innerWidth;
-const h = canvasEl.height = window.innerHeight * 2;
-
-function loop() {
-  requestAnimationFrame(loop);
-    ctx.clearRect(0,0,w,h);
-  
-  confs.forEach((conf) => {
-    conf.update();
-    conf.draw();
-  })
-}
-
-function Confetti () {
-  //construct confetti
-  const colours = ['#fde132', '#009bde', '#ff6b00'];
-  
-  this.x = Math.round(Math.random(10) * w);
-  this.y = Math.round(Math.random(10) * h)-(h/2);
-  this.rotation = Math.random(10)*360;
-
-  const size = Math.random(10)*(w/60);
-  this.size = size < 15 ? 15 : size;
-
-  this.color = colours[Math.round(Math.random(colours.length)*10-1)]
-
-  this.speed = this.size/7;
-  
-  this.opacity = Math.random(10);
-
-  this.shiftDirection = Math.random(10) > 0.5 ? 1 : -1;
-}
-
-Confetti.prototype.border = function() {
-  if (this.y >= h) {
-    this.y = h;
+var friends = [
+  {
+    name: "Ross Geller",
+    photo: "http://68.media.tumblr.com/6cea09c793de512f267ffb4dc783f466/tumblr_mh3c4hFGPu1r9zaago1_500.gif",
+    scores: [
+      "5",
+      "1",
+      "4",
+      "4",
+      "5",
+      "1",
+      "2",
+      "5",
+      "4",
+      "1"
+    ]
+  },
+  {
+    name: "Phoebe Buffay",
+    photo: "http://25.media.tumblr.com/23e479224f5179ac42665e7a648cf309/tumblr_mndv0cYih81r9zaago1_500.gif",
+    scores: [
+      "4",
+      "2",
+      "5",
+      "1",
+      "3",
+      "2",
+      "2",
+      "1",
+      "3",
+      "2"
+    ]
+  },
+  {
+    name: "Rachel Green",
+    photo: "http://38.media.tumblr.com/20ad32ddb6e4a8d04dea653b0373dfa6/tumblr_mfv54rXt5l1r9zaago1_500.gif",
+    scores: [
+      "5",
+      "2",
+      "2",
+      "2",
+      "4",
+      "1",
+      "3",
+      "2",
+      "5",
+      "5"
+    ]
+  },
+  {
+    name: "Monica Geller",
+    photo: "https://media.giphy.com/media/beYVvBUHy1Gla/giphy.gif",
+    scores: [
+      "3",
+      "3",
+      "4",
+      "2",
+      "2",
+      "1",
+      "3",
+      "2",
+      "2",
+      "3"
+    ]
+  },
+  {
+    name: "Joey Tribiani",
+    photo: "https://media.giphy.com/media/1FDzUi3TRm4yQ/giphy.gif",
+    scores: [
+      "4",
+      "3",
+      "4",
+      "1",
+      "5",
+      "2",
+      "5",
+      "3",
+      "1",
+      "4"
+    ]
+  },
+  {
+    name: "Chandler Bing",
+    photo: "http://33.media.tumblr.com/cf9686363fde6ca698a9b5b603eef01a/tumblr_ms0bxt7ThZ1r9zaago1_500.gif",
+    scores: [
+      "4",
+      "4",
+      "2",
+      "3",
+      "2",
+      "2",
+      "3",
+      "2",
+      "4",
+      "5"
+    ]
   }
-}
 
-Confetti.prototype.update = function() {
-  this.y += this.speed;
-  
-  if (this.y <= h) {
-    this.x += this.shiftDirection/5;
-    this.rotation += this.shiftDirection*this.speed/100;
-  }
+];
 
-  this.border();
-};
+module.exports = friends;
 
-Confetti.prototype.draw = function() {
-  ctx.beginPath();
-  ctx.arc(this.x, this.y, this.size, this.rotation, this.rotation+(Math.PI/2));
-  ctx.lineTo(this.x, this.y);
-  ctx.closePath();
-  ctx.globalAlpha = this.opacity;
-  ctx.fillStyle = this.color;
-  ctx.fill();
-};
 
-const ctx = canvasEl.getContext('2d');
-const confNum = Math.floor(w / 5);
-const confs = new Array(confNum).fill().map(_ => new Confetti());
 
-loop();
